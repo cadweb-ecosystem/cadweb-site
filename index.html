@@ -5,24 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadweb – Engineering neu orchestriert</title>
     <style>
+        @font-face {
+            font-family: 'Voltaire';
+            src: url('Voltaire-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
-            font-family: system-ui, sans-serif;
+            font-family: 'Voltaire', system-ui, sans-serif;
             line-height: 1.6;
             color: #222;
             background: #f5f5f5;
         }
 
         header {
-            background: #111;
+            background: #0A1A2F;
             color: #fff;
             padding: 4rem 2rem;
             text-align: center;
+            border-bottom: 1px solid #F5A623;
+            border-radius: 0 0 12px 12px;
+            overflow: hidden;
         }
 
         header h1 {
             font-size: 3rem;
             margin-bottom: 0.5rem;
+        }
+
+        header .logo {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 1.5rem auto;
+            display: block;
         }
 
         header p {
@@ -41,11 +59,59 @@
             margin-top: 0;
         }
 
+        .editions {
+            padding-left: 1.2rem;
+        }
+
+        .edition-sub {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .edition-sub li::before {
+            content: "→";
+            display: inline-block;
+            width: 1.2rem;
+            margin-right: 0.25rem;
+            color: #B0C6D6;
+            opacity: 0.9;
+        }
+
+        /* Edition hover colors */
+        .editions li {
+            transition: transform .12s ease;
+            margin: 0.6rem 0;
+        }
+
+        .editions li.pioneer { --edition-color: #D35400; }
+        .editions li.praktiker { --edition-color: #16A085; }
+        .editions li.experte { --edition-color: #3896A6; }
+
+        /* only color the strong element on hover */
+        .editions li:hover strong {
+            color: var(--edition-color);
+        }
+
+        .editions li:hover { transform: translateY(-2px); }
+
+        /* highlight entire .highlight box on hover */
         .highlight {
-            background: #fff;
+            transition: background .18s ease, box-shadow .18s ease, transform .08s ease;
+        }
+
+        .highlight:hover {
+            background: #071423;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+        }
+
+        .highlight {
+            background: #0A1A2F;
+            color: #fff;
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 2px solid #4EC3F7;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             margin-bottom: 2rem;
         }
 
@@ -58,8 +124,8 @@
 
         @media (prefers-color-scheme: dark) {
             body { background: #111; color: #ddd; }
-            header { background: #000; }
-            .highlight { background: #1a1a1a; box-shadow: none; }
+            header { background: #0A1A2F; border-bottom: 1px solid #F5A623; border-radius: 0 0 12px 12px; }
+            .highlight { background: #0A1A2F; box-shadow: none; color: #fff; border: 2px solid #4EC3F7; }
             footer { color: #888; }
         }
     </style>
@@ -68,9 +134,8 @@
 <body>
 
 <header>
-    <h1>cadweb</h1>
+    <img src="Logo-horizontal-1272x450-nega.png" alt="cadweb Logo" class="logo">
     <p>Engineering neu orchestriert</p>
-    <p><strong>Lokale Intelligenz. Reale Kontrolle.</strong></p>
 </header>
 
 <section>
@@ -93,11 +158,26 @@
     </div>
 
     <div class="highlight">
-        <h2>Editions</h2>
-        <ul>
-            <li><strong>cadweb Education</strong> — moderne Engineering‑Didaktik für Schulen und Lernende.</li>
-            <li><strong>cadweb Maker</strong> — für Tüftler, Bastler und Prototypenbauer.</li>
-            <li><strong>cadweb Pro</strong> — professionelle Workflows ohne Cloud‑Zwang.</li>
+        <h2>Editionen</h2>
+        <ul class="editions">
+            <li class="pioneer">
+                <strong>cadweb Pionier</strong> — Für alle, die starten, lernen, entdecken, ausprobieren.
+                <ul class="edition-sub">
+                    <li>Schulen, Lernende, Einsteiger, Workshops, Didaktik.</li>
+                </ul>
+            </li>
+            <li class="praktiker">
+                <strong>cadweb Praktiker</strong> — Für alle, die Projekte umsetzen, Dinge bauen, gestalten, dokumentieren.
+                <ul class="edition-sub">
+                    <li>Maker, Werkstätten, Vereine, Hobby, kleine Teams.</li>
+                </ul>
+            </li>
+            <li class="experte">
+                <strong>cadweb Experte</strong> — Für alle, die professionelle Workflows, Audits, Dokumentation, Prozesse brauchen.
+                <ul class="edition-sub">
+                    <li>KMU, Selbstständige, Profis, technische Dokumentation, Prüfprozesse.</li>
+                </ul>
+            </li>
         </ul>
     </div>
 
